@@ -7,10 +7,16 @@
   height: 80px;
   border : 1px solid black;
   display : inline-block;
+  text-align: center;
 }
 
 .box:hover{
   background-color: lightskyblue;
+  cursor: pointer;
+}
+
+.box.unavailable:hover{
+  background-color: lightcoral;
   cursor: pointer;
 }
 
@@ -20,6 +26,6 @@
   width : 246px;
 }
 
-#header{
+.gamechecker{
   text-align: center;
 }

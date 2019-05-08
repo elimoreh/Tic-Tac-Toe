@@ -1,6 +1,8 @@
 import React from 'react';
 import './App.css';
 import Boxes from './Boxes.js';
+import GameChecker from './GameChecker.js';
+ 
 
 class App extends React.Component {
   constructor(props){
@@ -12,23 +14,32 @@ class App extends React.Component {
     }
   }
 
-  selectBox(index){
-    if(this.board[index] === 0 ){
-      if(this.state.next === 1){
-        
-      } else {
+  selectBox(newBoard, newNext){
+      this.setState({
+         next : newNext, 
+         board : newBoard
+      });
+  };
 
-      }
-    }
-    
-  }
+  reset(){
+    this.setState({
+      board : Array(9).fill(0),
+      next : 1,
+    });
+  };
   
   render () {
       return (
-      <div className="container"> 
-        <h1 id="header">Tic Tac Toe</h1>
-        <Boxes board={this.state.board}/>
-      </div>
+      <div>
+        <div className="container"> 
+          <h1 id="header">Tic Tac Toe</h1>
+          <Boxes board={this.state.board} next={this.state.next} selectBox={this.selectBox.bind(this)}/>
+        </div>
+        <div className="gamechecker"> 
+          <GameChecker board={this.state.board} reset ={this.reset.bind(this)}/>
+        </div>
+      </div> 
+      
     )
   }; 
 };
@@ -36,3 +47,8 @@ class App extends React.Component {
 
 
 export default App;
+
+
+{/* <div className="gamechecker">
+<GameChecker board={this.state.board} reset={this.reset.bind(this)}/>
+</div> */}
